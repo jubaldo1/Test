@@ -1,0 +1,6 @@
+[16-May-2018 16:14:18 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000] [1049] Unknown database 'crime_tips'' in /home/ubuntu/workspace/Test3/practF1/DBConnectionMa.php:16
+Stack trace:
+#0 /home/ubuntu/workspace/Test3/practF1/DBConnectionMa.php(16): PDO->__construct('mysql:host=0.0....', 'jubaldo', '')
+#1 /home/ubuntu/workspace/Test3/practF1/apiEndpt.php(3): include('/home/ubuntu/wo...')
+#2 {main}
+  thrown in /home/ubuntu/workspace/Test3/practF1/DBConnectionMa.php on line 16

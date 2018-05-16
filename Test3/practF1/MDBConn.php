@@ -1,5 +1,5 @@
 <?php
-function getDataBaseconnection($opt){
+function getDBConn($opt){
      $connUrl = getenv('JAWSDB_MARIA_URL');
     //$connUrl = "mysql://j4dca6gxki2p2a7s:puwg05o53pi5g1r0@p2d0untihotgr5f6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/hllilhmqaqrauk1m";
     $hasConnUrl = !empty($connUrl);

@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include "MDBConnection.php";
+    include "MDBConn.php";
     $dbConn = getDBConn("Test");
 
     $httpMethod = strtoupper($_SERVER['REQUEST_METHOD']);

@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include "DBConnectionMa.php";
+    include "MDBConnection.php";
     $dbConn = getDBConn("Test");
 
     $httpMethod = strtoupper($_SERVER['REQUEST_METHOD']);
@@ -19,7 +19,7 @@
         header("Content-Type: application/json");
 
         // TODO: do stuff to get the $results which is an associative array
-        $results = array();
+        $sql = "SELECT * FROM "
 
         // Sending back down as JSON
         echo json_encode($results);

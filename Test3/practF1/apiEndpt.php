@@ -42,7 +42,7 @@
         $sql = "INPUT INTO Data (name)
                 VALUES (:name)";
                 
-         $stmt = $dbConn->prepare($sql);
+        $stmt = $dbConn->prepare($sql);
         $stmt->execute( array (':name' => $jsonData["in"]));
 
         // Allow any client to access

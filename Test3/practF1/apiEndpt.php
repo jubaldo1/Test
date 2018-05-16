@@ -19,7 +19,10 @@
         header("Content-Type: application/json");
 
         // TODO: do stuff to get the $results which is an associative array
-        $sql = "SELECT * FROM "
+        $sql = "SELECT * FROM Data";
+        
+        $statement = $dbConn->query($sql);
+        $result = $statement -> fetchAll();
 
         // Sending back down as JSON
         echo json_encode($results);

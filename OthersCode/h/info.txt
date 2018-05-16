@@ -1,0 +1,2 @@
+My heroku app does run but it doesn't have the current database that is in phpmyadmin.
+I do have 20 items in the receiving table but my heroku app does not display it because it has the old database.

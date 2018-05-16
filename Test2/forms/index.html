@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TEST2</title>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="js/jquery.min.js"></script>
+        <link  href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <script src="js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script>
+            /* global $ */
+            
+            // This runs when the page has loaded, or when it's "ready"
+            $(document).ready(function() {
+                $.ajax({
+                    type: "GET",
+                    url: "apiEndpoint.php",
+                    dataType: "json", 
+                    success: function(data,status) {
+                        $(".here").append("<table>");
+                        for (var i = 0; i<data.length; i++)
+                        {
+                           $(".here").append("<tr>");
+                           $(".here").append("<td>Yes: " + data[i].yes + "</td>");
+                           $(".here").append("<td>No: " + data[i].no + "</td>");
+                           $(".here").append("</tr>");
+                        }
+                        $(".here").append("</table>");
+                       
+                        alert("Data GET: " + data);
+                        console.log("Data gotten", data);
+                    },
+                    complete: function(data,status) { 
+                        // optional, used for debugging purposes
+                        alert("Data GET: " + data.answer + "<br>Status GET: " + status);
+                    },
+                    error: function(err) {
+                        alert("Error GET: " + err);
+                        console.log("Didn't get data", err);
+                    }
+                }); // end of ajax GET
+                    
+                $(".input").click(function() { 
+                    var answer = $(".answers").val();
+                    
+                    $.ajax({
+                        type: "POST",
+                        url: "apiEndpoint.php",
+                        dataType: "json",
+                        data: {
+                          "answer":answer  
+                        },
+                        success: function(data,status) {
+                            alert("Answer: " + answer)
+                        },
+                        complete: function(data,status) { 
+                            // optional, used for debugging purposes
+                            alert("Data POST: " + data + ", Status POST: " + status);
+                        },
+                        error: function(err) {
+                            alert("Error POST: " + err);
+                            console.log("Didn't get data", err);
+                        }
+                    }); // end of ajax POST
+                }); //  end of on-click
+            }); // end of ready function
+        </script>
+    </head>
+    <body>
+        <h3>AJAX w/ API Endpoint</h3>
+        <h2>Poll Challenge</h2>
+        
+        <br>Do Stuff</br>
+            <div class = "here">
+                
+            </div>
+        <form>
+            <input type='radio' class="answers" value="yes"> Yes
+            <input type='radio' class="answers" value="no"> No
+            <button class="input">TEST</button>
+        </form>
+    </body>
+</html>

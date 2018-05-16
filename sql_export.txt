@@ -1,0 +1,5 @@
+mysqldump your_database_name > any_file_name.sql
+
+OR
+
+Here is my 2 cents: mysqldump your_database_name > any_file_name.sql -uyour_db_user_name -p

@@ -39,7 +39,32 @@
                     complete: function(data,status) { //optional, used for debugging purposes
                         alert(status);
                     }
-                });//ajax
+                });//ajax GET call
+              
+                
+                $("#sub").click(function() {
+                      
+                    var data = {
+                        "in": $("#input").val()
+                    }
+                    
+                    $.ajax({
+                    type: "POST",
+                    url: "apiEndpt.php",
+                    dataType: "json",
+                    contentType: "application/json",
+                    data: JSON.stringify(data),
+                    success: function(data,status) {
+                        alert(data);
+                    },
+                    error: function(err, data) {
+                        alert(err);
+                    },
+                    complete: function(data,status) { //optional, used for debugging purposes
+                        alert(status);
+                    }
+                });//ajax GET call
+                });
             });
         </script>
     </head>
@@ -49,5 +74,11 @@
         <button id="clearTestResults">Remove</button>
         
         <div id="testBtnResult"></div>
+        <div id="formFill">
+            <form>
+                Input: <input type="text" id="input">
+                <button id="sub">Submit</button>
+            </form>
+        </div>
     </body>
 </html>

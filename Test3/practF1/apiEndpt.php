@@ -39,6 +39,11 @@
 
         // TODO: do stuff to get the $results which is an associative array
         // $results = array();
+        $sql = "INPUT INTO Data ('name')
+                VALUES (:name)";
+                
+         $stmt = $dbConn->prepare($sql);
+        $stmt->execute( array (':name' => $jsonData["in"]));
 
         // Allow any client to access
         header("Access-Control-Allow-Origin: *");
